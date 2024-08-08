@@ -1,0 +1,111 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<style>
+
+</style>
+
+<div class="container">
+  <h1 class="text-center"> <i class="fa fa-user-md"></i></h1>
+  <h2 class="text-center">Funcionario</h1>
+
+    <br>
+
+    <td><a class="btn btn-dark" href="?pagina=funcionario" role="button"><i class="bi bi-arrow-return-left"></i> </a></td>
+
+    <br>
+
+  <form method="post" action="?pagina=funcionario&metodo=insert">
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Nome</label>
+      <input class="form-control" name="nome">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">CPF</label>
+      <input type="number" class="form-control" name="cpf">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Senha</label>
+      <input type="number" class="form-control" name="password">
+    </div>
+
+    <div class="row mb-3">
+      <label for="txtDataNascimento" class="col-sm-2 col-form-label">Data de nascimento</label>
+      <div class="col-sm-10">
+        <input type="date" name="data_nascimento" data-mask="00/00/0000" class="form-control">
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="ocupacao" class="form-label">Ocupacao</label>
+      <select class="form-select" aria-label="Default select example" name="ocupacao">
+        {% for ocupacao in ocupacoes %}
+        <option value="{{ocupacao.id}}">{{ocupacao.nome_ocupacao}}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="genero" class="form-label">Genero</label>
+      <select class="form-select" aria-label="Default select example" name="genero">
+        <option value="Feminino">Feminino</option>
+        <option value="Masculino">Masculino</option>
+      </select>
+    </div>
+
+    <div class="row mb-3">
+      <label for="txtEmail" class="col-sm-2 col-form-label">E-mail</label>
+      <div class="col-sm-10">
+        <input type="email" name="email" class="form-control" placeholder="E-mail">
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Endereço</label>
+      <input class="form-control" name="endereco_nome">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Número</label>
+      <input class="form-control" name="endereco_numero">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Complemento</label>
+      <input class="form-control" name="endereco_complemento">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">CEP</label>
+      <input class="form-control" name="endereco_cep">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Endereço Padrão</label>
+      <input class="form-control" name="endereco_padrao">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Bairro</label>
+      <input class="form-control" name="endereco_bairro">
+    </div>
+
+    <div class="mb-3">
+      <label for="cidade" class="form-label">Cidades</label>
+      <select class="form-select" aria-label="Default select example" name="cidade_id">
+        {% for cidade in cidades %}
+        <option value="{{cidade.cidades_id}}">{{cidade.cidades_nome}}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <input type="submit" value="Cadastrar" class="btn btn-dark">
+  </form>
+</div>

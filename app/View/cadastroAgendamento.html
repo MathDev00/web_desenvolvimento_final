@@ -1,0 +1,118 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+  .form-label, .form-control {
+    font-size: 0.875rem; /* Diminuir o tamanho da fonte */
+  }
+
+  .form-control {
+    padding: 0.25rem 0.5rem; /* Diminuir o padding dos inputs */
+  }
+
+  .mb-3 {
+    text-align: center; /* Centralizar o conteúdo dos elementos mb-3 */
+  }
+
+  .form-select {
+    font-size: 0.875rem; /* Diminuir o tamanho da fonte */
+    padding: 0.25rem 0.5rem; /* Diminuir o padding do select */
+  }
+
+  .container {
+    max-width: 600px; /* Limitar a largura do container */
+    margin: auto; /* Centralizar o container */
+  }
+
+  .form-container {
+    border: 1px solid #ccc; /* Adicionar borda */
+    padding: 20px; /* Adicionar padding */
+    border-radius: 10px; /* Adicionar borda arredondada */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adicionar sombra */
+  }
+
+  h2 {
+    font-size: 1.75rem; /* Aumentar o tamanho da fonte */
+    font-weight: bold; /* Deixar o texto em negrito */
+    color: #333; /* Cor do texto */
+    text-align: center; /* Centralizar o texto */
+    position: relative; /* Necessário para a linha abaixo */
+  }
+
+  h2::after {
+    content: ''; /* Pseudo-elemento para a linha abaixo do título */
+    display: block;
+    width: 50%; /* Largura da linha */
+    height: 3px; /* Altura da linha */
+    background-color: #333; /* Cor da linha */
+    margin: 0.5rem auto 1rem; /* Espaçamento da linha */
+  }
+
+  .title-icon {
+    font-size: 2.5rem; /* Tamanho do ícone */
+    color: #333; /* Cor do ícone */
+    display: block;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+</style>
+
+<div class="container">
+  <div class="title-icon">
+    <i class="bi bi-calendar"></i>
+  </div>
+  <h2>Agendamento</h2>
+
+  <div class="text-center mb-3">
+    <a class="btn btn-dark" href="?pagina=agendamento" role="button"><i class="bi bi-arrow-return-left"></i> </a>
+  </div>
+
+  <div class="form-container">
+    <form method="post" action="?pagina=agendamento&metodo=insert">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Titulo</label>
+        <input class="form-control" name="titulo">
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-sm-6">
+          <label for="txtDataNascimento" class="col-form-label">Data inicio</label>
+          <input type="datetime-local" name="data_inicio" data-mask="dd/MM/yyyy" class="form-control">
+        </div>
+        <div class="col-sm-6">
+          <label for="txtDataNascimento" class="col-form-label">Data final</label>
+          <input type="datetime-local" name="data_final" data-mask="dd/MM/yyyy HH:mm:ss" class="form-control">
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="cidade" class="form-label">Profissional</label>
+        <select class="form-select" aria-label="Default select example" name="funcionario_id">
+          {% for funcionario in funcionarios %}
+          <option value="{{funcionario.id}}">{{funcionario.usuarios_nome}}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="cidade" class="form-label">Paciente</label>
+        <select class="form-select" aria-label="Default select example" name="paciente_id">
+          {% for paciente in pacientes %}
+          <option value="{{paciente.id}}">{{paciente.usuarios_nome}}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Responsavel pelo agendamento</label>
+        <input class="form-control" name="responsavel_agendamento">
+      </div>
+
+      <input type="submit" value="Cadastrar" class="btn btn-dark">
+      <br>
+    </form>
+  </div>
+</div>
